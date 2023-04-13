@@ -1,0 +1,68 @@
+QUE-:Next greater element 1
+
+
+class Solution {
+public:
+    int pos (vector<int> nums2, int k)
+    {int n = nums2.size() ; 
+        for (int i = 0 ; i < n ; i ++)
+        {
+            if (nums2[i] == k){
+            return i ; }
+        }
+        return -1 ; 
+    }
+vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+                vector<int> res ; 
+               for (int i = 0 ; i < nums1.size() ; i ++){
+     int ele = nums1[i] ; 
+              int s = -1 ; 
+    int position = pos(nums2, ele) ; 
+            for (int j = position + 1 ; j < nums2.size() ; j ++){
+                if (nums2[j] > ele){
+                    s = nums2[j] ; 
+                    break ; }
+                else continue ; }
+        res.push_back(s) ; }
+    return res ; }
+};
+
+
+
+
+QUE-:Valid parenthesis
+
+
+
+class Solution {
+public:
+    bool isValid(string s) {
+        int n=s.size();
+      stack<char>st;
+      for(int i=0;i<n;i++){
+          if(s[i]=='(' || s[i]=='{' || s[i]=='['|| st.empty()){
+          st.push(s[i]);}
+          else if(s[i]==')'){
+          if (st.top()=='('){
+             st.pop();}
+             else{
+                 return false;
+             }}
+            else if(s[i]=='}'){
+            if(st.top()=='{'){
+                    st.pop();}
+                    else{
+                        return false;
+                    }
+              }
+               else if(s[i]==']'){
+                  if(st.top()=='['){
+                      st.pop();}
+                      else{
+                          return false;
+                      }                 }
+              }
+              
+                         return st.empty();
+                }
+};
